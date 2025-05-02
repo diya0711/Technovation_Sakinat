@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sakinat psychologist accaunt </title>
+    <link rel="shortcut icon" href="/love.png" type="image/x-icon" />
+    <link rel="stylesheet" href="accaunt.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="flex" style="display: flex; align-items: center;  gap: 10px;">
+            <h2>Sakinat</h2>
+            <img src="/love.png" alt="" width="40px" height="40px">
+        </div>
+        <a href="/stemforce/sakinat/chatForP/chat.html" class="menu-item"><i class='bx bx-chat'></i>Chat</a>
+        <a href="/stemforce/sakinat/chatForP/psycholog.html" class="menu-item"><i
+                class='bx bx-book'></i>Psychologists</a>
+        <a href="/stemforce/sakinat/chatForP/test1.html" class="menu-item"><i class='bx bx-video'></i>Tests</a>
+        <a href="/stemforce/sakinat/chatForP/categories.html" class="menu-item"><i class='bx bxl-microsoft-teams'></i>
+            categories</a>
+        <a href="/psycholog-accaunt/accaunt-doc.html" class="menu-item"><i class='bx bx-user'></i>Profile</a>
+    </div>
+
+    <div class="app-container">
+        <header style="position: relative;">
+            <div class="navbar1" style="display: none;">
+                <div class="burger" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <nav id="nav-menu" style="display: flex;">
+                    <a href="/stemforce/sakinat/chatForP/chat.html" class="menu-item"><i class='bx bx-chat'></i>Chat</a>
+                    <a href="/stemforce/sakinat/chatForP/psycholog.html" class="menu-item"><i
+                            class='bx bx-book'></i>Psychologists</a>
+                    <a href="/stemforce/sakinat/chatForP/test1.html" class="menu-item"><i
+                            class='bx bx-video'></i>Tests</a>
+                    <a href="/stemforce/sakinat/chatForP/categories.html" class="menu-item"><i
+                            class='bx bxl-microsoft-teams'></i> categories</a>
+                    <a href="/psycholog-accaunt/accaunt-doc.html" class="menu-item"><i
+                            class='bx bx-user'></i>Profile</a>
+                </nav>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-section="media"><i class="fas fa-photo-video"></i> Media</button>
+                <button class="nav-btn" data-section="tests"><i class="fas fa-poll"></i> Tests</button>
+                <button class="nav-btn" data-section="account"><i class="fas fa-cog"></i> Account</button>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main>
+            <!-- Media section -->
+            <section id="media-section" class="content-section active">
+                <h2><i class="fas fa-upload"></i> Upload Media</h2>
+                <div class="upload-options">
+                    <div class="upload-option">
+                        <input type="file" id="photo-upload" accept="image/*" multiple>
+                        <label for="photo-upload" class="upload-btn">
+                            <i class="fas fa-camera"></i>
+                            <span>Upload Photos</span>
+                        </label>
+                    </div>
+                    <div class="upload-option">
+                        <input type="file" id="video-upload" accept="video/*">
+                        <label for="video-upload" class="upload-btn">
+                            <i class="fas fa-video"></i>
+                            <span>Upload Video</span>
+                        </label>
+                    </div>
+                </div>
+
+                <h2><i class="fas fa-images"></i> My Media</h2>
+                <div class="media-gallery" id="media-gallery">
+                    <!-- Uploaded media will appear here -->
+                </div>
+            </section>
+
+            <!-- Tests section -->
+            <section id="tests-section" class="content-section">
+                <h2><i class="fas fa-plus-circle"></i> Create New Test</h2>
+                <div class="test-creator">
+                    <input type="text" id="test-title" placeholder="Test Title">
+                    <div id="questions-container">
+                        <!-- Questions will be added here -->
+                    </div>
+                    <button id="add-question-btn"><i class="fas fa-plus"></i> Add Question</button>
+                    <button id="save-test-btn"><i class="fas fa-save"></i> Save Test</button>
+                </div>
+
+                <h2><i class="fas fa-list"></i> My Tests</h2>
+                <div class="tests-list" id="tests-list">
+                    <!-- Created tests will appear here -->
+                </div>
+            </section>
+
+            <!-- Account section -->
+            <section id="account-section" class="content-section">
+                <h2><i class="fas fa-user-cog"></i> Account Settings</h2>
+                <div class="account-settings">
+                    <div class="avatar-section">
+                        <div class="avatar-container">
+                            <img id="account-avatar" src="accaunt1.jpg" alt="Avatar">
+                        </div>
+                        <input type="file" id="account-avatar-upload" accept="image/*">
+                        <button id="change-account-avatar-btn"><i class="fas fa-user-edit"></i> Change Avatar</button>
+                    </div>
+
+                    <div class="account-info">
+                        <label for="account-username">Username:</label>
+                        <input type="text" id="account-username" placeholder="Enter your name">
+
+                        <label for="account-bio">About Me:</label>
+                        <textarea id="account-bio" placeholder="Tell about yourself..."></textarea>
+
+                        <button id="save-account-btn"><i class="fas fa-save"></i> Save Changes</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal window for media viewing -->
+    <div id="media-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modal-image" style="display: none;">
+            <video id="modal-video" controls style="display: none;"></video>
+        </div>
+    </div>
+
+
+</body>
+<script src="./accaunt.js"></script>
+
+</html>

@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "ttt (2)",
+			"path": ".."
+		},
+		{
+			"name": "telefon",
+			"path": "../../telefon"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "ttt (2)",
+		"liveServer.settings.port": 5501
+	}
+}

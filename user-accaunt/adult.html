@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="/love.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+ 
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="flex">
+            <h2>Sakinat</h2>
+            <img src="/love.png" alt="" width="40px" height="40px">
+        </div>
+        <a href="/stemforce/sakinat/chat/chat.html" class="menu-item"><i class='bx bx-chat'></i>Chat</a>
+        <a href="/stemforce/sakinat/chat/psycholog.html" class="menu-item"><i class='bx bx-book'></i>Psychologists</a>
+        <a href="/stemforce/sakinat/chat/test1.html" class="menu-item"><i class='bx bx-video'></i>Tests</a>
+        <a href="/user-accaunt/index.html" class="menu-item"><i class='bx bx-user'></i>Profile</a>
+    </div>
+
+    <div class="account-container">
+        <div class="big-burger-box">
+            <div class="navbar1">
+                <div class="burger" onclick="toggleMenu()">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                <nav id="nav-menu">
+                    <a href="/stemforce/sakinat/chat/chat.html" class="menu-item"><i class='bx bx-chat'></i>Chat</a>
+                    <a href="/stemforce/sakinat/chat/psycholog.html" class="menu-item"><i class='bx bx-book'></i>Psychologists</a>
+                    <a href="/stemforce/sakinat/chat/test1.html" class="menu-item"><i class='bx bx-video'></i>Tests</a>
+                    <a href="/user-accaunt/index.html" class="menu-item"><i class='bx bx-user'></i>Profile</a>
+                </nav>
+            </div>
+        </div>
+
+        <h1>My Profile</h1>
+
+        <div class="avatar-section">
+            <div class="avatar-container">
+                <img id="avatar-img" src="/telefon/accaunt1.jpg" alt="Avatar">
+            </div>
+            <input type="file" id="avatar-upload" accept="image/*">
+            <button id="change-avatar-btn">Change Avatar</button>
+        </div>
+
+        <div class="profile-section">
+            <h2>About Me</h2>
+            <textarea id="about-me" placeholder="Tell us about yourself..."></textarea>
+            <button id="save-profile-btn">Save Profile</button>
+        </div>
+
+        <div class="status-section">
+            <h2>My Status</h2>
+            <input type="text" id="status-input" placeholder="What's new with you?">
+            <button id="update-status-btn">Update Status</button>
+            <div id="status-history"></div>
+        </div>
+    </div>
+
+ <script src="./script.js"></script>
+</body>
+
+</html>

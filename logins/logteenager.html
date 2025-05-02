@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sakinat</title>
+    <link rel="shortcut icon" href="/love.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <link href='/stemforce/sakinat/main/assets/css/style.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap' rel='stylesheet'>
+    <style>
+        .input-box input {
+            width: 100%;
+            margin: -10px;
+            padding: 10px 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            background-color: transparent;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box login">
+            <form action="#">
+                <h1>Login</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <div class="forgot-link">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button  type="submit" class="btn">Login</button>
+                <p>or login with social platforms</p>
+                <div class="social-icons">
+                    <a href="#"><i class='bx bxl-google'></i></a>
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <form id="registrationForm">
+                <h1 style="padding: 20px;" class="text-reg1">Registration</h1>
+                <div class="input-box">
+                    <input type="number" id="age" placeholder="your age" required min="6" max="140">
+                    <i class='bx bxs-user'></i>
+                    <div class="error-message" id="age-error">Please enter a valid age (6-140)</div>
+                </div>
+                <div id="consentSection" style="display: none;">
+                    <label for="consent">Parental Consent (required if under 18):</label>
+                    <input type="file" id="consent" name="consent">
+                    <div class="error-message" id="consent-error">Parental consent is required</div>
+                    <br><br>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <i class='bx bxs-user'></i>
+                    <div class="error-message" id="username-error">Username is required</div>
+                </div>
+                <div class="input-box">
+                    <input type="tel" id="phone" placeholder="+998XX-XXX-XX-XX" required 
+                        pattern="\+998\d{2}-\d{3}-\d{2}-\d{2}"
+                        title="Format: +998XX-XXX-XX-XX">
+                    <i class='bx bxs-phone'></i>
+                    <div class="error-message" id="phone-error">Please enter a valid phone number (+998XX-XXX-XX-XX)</div>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="sms-code" placeholder="Enter SMS code" required>
+                    <i class='bx bxs-lock-alt'></i>
+                    <div class="error-message" id="sms-error">SMS code is required</div>
+                </div>
+                <button type="submit" class="btn" id="registerBtn">Register</button>
+                <p>or register with social platforms</p>
+                <div class="social-icons">
+                    <a href="#"><i class='bx bxl-google'></i></a>
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                </div>
+            </form>
+        </div>
+
+        <div class="toggle-box">
+            <div class="toggle-panel toggle-left">
+                <h1>Hello, Welcome!</h1>
+                <p>Don't have an account?</p>
+                <button class="btn register-btn">Register</button>
+            </div>
+
+            <div class="toggle-panel toggle-right">
+                <h1 class="text-reg">Welcome Back!</h1>
+                <p style="margin-top: 60px;">Already have an account?</p>
+                <button class="btn login-btn">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between login and register forms
+        const registerBtn = document.querySelector('.register-btn');
+        const loginBtn = document.querySelector('.login-btn');
+        const container = document.querySelector('.container');
+
+        registerBtn.addEventListener('click', () => {
+            container.classList.add('active');
+        });
+
+        loginBtn.addEventListener('click', () => {
+            container.classList.remove('active');
+        });
+
+        // Login button redirect
+        document.querySelector('.login form .btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = "/user-accaunt/index.html";
+        });
+
+        // Age validation for parental consent
+        document.getElementById('age').addEventListener('change', function() {
+            const age = parseInt(this.value, 10);
+            const consentSection = document.getElementById('consentSection');
+            consentSection.style.display = (age < 18 && age >= 6) ? 'block' : 'none';
+        });
+
+        // Form validation and submission
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+            
+            // Get form values
+            const age = parseInt(document.getElementById('age').value, 10);
+            const username = document.getElementById('username').value;
+            const phone = document.getElementById('phone').value;
+            const smsCode = document.getElementById('sms-code').value;
+            const phonePattern = /^\+998\d{2}-\d{3}-\d{2}-\d{2}$/;
+            
+            // Validate age
+            if (isNaN(age) || age < 6 || age > 140) {
+                document.getElementById('age-error').style.display = 'block';
+                return;
+            }
+            
+            // Validate parental consent for under 18
+            if (age < 18 && !document.getElementById('consent').files.length) {
+                document.getElementById('consent-error').style.display = 'block';
+                return;
+            }
+            
+            // Validate username
+            if (!username.trim()) {
+                document.getElementById('username-error').style.display = 'block';
+                return;
+            }
+            
+            // Validate phone number
+            if (!phone.match(phonePattern)) {
+                document.getElementById('phone-error').style.display = 'block';
+                return;
+            }
+            
+            // Validate SMS code
+            if (!smsCode.trim()) {
+                document.getElementById('sms-error').style.display = 'block';
+                return;
+            }
+            
+            // If all validations pass
+            alert('Registration successful!');
+            // You can add AJAX submission here or redirect to another page
+            // window.location.href = "/success-page.html";
+        });
+
+        // Real-time phone number validation
+        document.getElementById('phone').addEventListener('input', function() {
+            const pattern = /^\+998\d{2}-\d{3}-\d{2}-\d{2}$/;
+            if (this.value.match(pattern)) {
+                this.style.borderColor = 'green';
+                document.getElementById('phone-error').style.display = 'none';
+            } else {
+                this.style.borderColor = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
